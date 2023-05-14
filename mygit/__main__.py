@@ -7,7 +7,7 @@ def command_init(args):
 
 
 def command_add(args):
-    add()
+    add(args.path)
 
 
 def main():
@@ -20,6 +20,7 @@ def main():
     subparser.set_defaults(handler=command_init)
 
     subparser = subparsers.add_parser('add', help='mygit-add - Add file contents to the index')
+    subparser.add_argument(dest='path', metavar='PATH', type=str, nargs='+', help='/path/to/file')
     subparser.set_defaults(handler=command_add)
 
     args = parser.parse_args()
